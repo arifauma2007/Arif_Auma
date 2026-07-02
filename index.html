@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Arif — </title>
+<meta name="description" content="ประวัติและพอร์ตโฟลิโอของ [Arif] — นักพัฒนาซอฟต์แวร์ ผู้สร้างสรรค์ระบบ และเทคโนโลยี">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root {
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-serif: 'Newsreader', 'Sarabun', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ===== Theme: Light (paper) ===== */
+[data-theme="light"] {
+  --bg: #f4ede0;
+  --bg-elevated: #fbf6ec;
+  --bg-deep: #ebe2d0;
+  --bg-code: #1a1612;
+  --fg: #1a1612;
+  --fg-soft: #4a423a;
+  --muted: #8a7f6e;
+  --border: #d8cdb6;
+  --border-soft: #e5dcc7;
+  --accent: #c8421f;
+  --accent-hover: #a8351a;
+  --accent-soft: rgba(200, 66, 31, 0.08);
+  --accent-text: #fbf6ec;
+  --shadow-color: 30 25 20;
+  --grid-color: rgba(80, 65, 40, 0.06);
+}
+
+/* ===== Theme: Dim (dusk) ===== */
+[data-theme="dim"] {
+  --bg: #1c2128;
+  --bg-elevated: #242a33;
+  --bg-deep: #161a20;
+  --bg-code: #0d1117;
+  --fg: #d6dce4;
+  --fg-soft: #a8b0bc;
+  --muted: #6a7280;
+  --border: #343c47;
+  --border-soft: #2a313b;
+  --accent: #e8b478;
+  --accent-hover: #f0c489;
+  --accent-soft: rgba(232, 180, 120, 0.12);
+  --accent-text: #1c2128;
+  --shadow-color: 0 0 0;
+  --grid-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ===== Theme: Dark (night) ===== */
+[data-theme="dark"] {
+  --bg: #0a0b0d;
+  --bg-elevated: #141518;
+  --bg-deep: #050607;
+  --bg-code: #050607;
+  --fg: #ebe9e4;
+  --fg-soft: #b8b5ad;
+  --muted: #6a6760;
+  --border: #26282d;
+  --border-soft: #1a1c20;
+  --accent: #ffa653;
+  --accent-hover: #ffb874;
+  --accent-soft: rgba(255, 166, 83, 0.1);
+  --accent-text: #0a0b0d;
+  --shadow-color: 0 0 0;
+  --grid-color: rgba(255, 255, 255, 0.02);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+  transition: background-image 0.6s ease;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  transition: background 0.6s ease;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 100;
+  transition: width 0.1s linear, background-color 0.6s ease;
+  box-shadow: 0 0 12px var(--accent), 0 0 4px var(--accent);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid var(--border-soft);
+  z-index: 50;
+  transition: background-color 0.6s ease, border-color 0.6s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  gap: 24px;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--fg);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.6s ease;
+}
+
+.logo-mark {
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-text);
+  font-size: 12px;
+  font-weight: 800;
+  transition: background-color 0.6s ease, color 0.6s ease, transform 0.3s ease;
+}
+.logo:hover .logo-mark { transform: rotate(-8deg) scale(1.08); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+  margin-right: 28px;
+}
+
+.nav a {
+  color: var(--fg-soft);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.nav a:hover { color: var(--accent); }
+.nav a:hover::after { transform: scaleX(1); }
+
+/* ===== Theme toggle ===== */
+.theme-toggle {
+  position: relative;
+  display: flex;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  transition: background-color 0.6s ease, border-color 0.6s ease;
+}
+
+.theme-toggle button {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: color 0.3s;
+  padding: 0;
+}
+.theme-toggle button:hover { color: var(--fg); }
+.theme-toggle button.active { color: var(--accent-text); }
+
+.theme-toggle .indicator {
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  left: 3px;
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.6s ease;
+}
+
+[data-theme="light"] .theme-toggle .indicator { transform: translateX(0); }
+[data-theme="dim"]   .theme-toggle .indicator { transform: translateX(32px); }
+[data-theme="dark"]  .theme-toggle .indicator { transform: translateX(64px); }
+
+/* ===== Hero ===== */
+.hero {
+  padding: 72px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-intro {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-intro::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--muted);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--fg);
+  margin: 0 0 28px;
+}
+.hero-title .accent {
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+}
+.hero-title .punct { color: var(--muted); }
+
+.hero-sub {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--fg-soft);
+  max-width: 520px;
+  margin: 0 0 36px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-cta:hover {
+  background: var(--accent);
+  color: var(--accent-text);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px var(--accent);
+}
+.hero-cta svg { transition: transform 0.3s; }
+.hero-cta:hover svg { transform: translateX(3px); }
+
+/* ===== Terminal ===== */
+.terminal {
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.75;
+  box-shadow: 0 30px 80px -30px rgba(var(--shadow-color), 0.4);
+  position: relative;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.terminal-dot { width: 11px; height: 11px; border-radius: 50%; }
+.terminal-dot.r { background: #ff5f57; }
+.terminal-dot.y { background: #febc2e; }
+.terminal-dot.g { background: #28c840; }
+
+.terminal-title { margin-left: auto; font-size: 11.5px; color: var(--muted); }
+.terminal-body { padding: 24px; min-height: 320px; color: var(--fg); }
+.term-line { white-space: pre-wrap; word-break: break-word; margin-bottom: 8px; }
+.term-prompt { color: var(--accent); margin-right: 10px; font-weight: 500; }
+.term-out { color: var(--fg-soft); }
+.term-cursor {
+  display: inline-block; width: 8px; height: 16px; background: var(--accent);
+  vertical-align: text-bottom; animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* ===== Stats row ===== */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-soft);
+}
+.stat-value { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--fg); line-height: 1; margin-bottom: 6px; }
+.stat-value .unit { font-size: 18px; color: var(--muted); margin-left: 2px; }
+.stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ===== Section ===== */
+.section { padding: 88px 0; position: relative; }
+.section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 24px; flex-wrap: wrap; }
+.section-title { font-family: var(--font-display); font-size: clamp(34px, 5vw, 56px); font-weight: 700; letter-spacing: -0.035em; margin: 0; color: var(--fg); }
+.section-eyebrow { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+.section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.section-link { font-family: var(--font-mono); font-size: 13px; color: var(--fg-soft); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 3px; }
+.section-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ===== Portfolio Grid ===== */
+.portfolio-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
+.work-card {
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 18px; padding: 34px;
+  text-decoration: none; color: inherit; display: flex; flex-direction: column; position: relative; overflow: hidden; min-height: 280px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, box-shadow 0.5s;
+}
+.work-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 30px 60px -30px rgba(var(--shadow-color), 0.5); }
+.work-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.work-card:hover::after { transform: scaleX(1); }
+.work-card.size-lg { grid-column: span 8; min-height: 360px; }
+.work-card.size-md { grid-column: span 4; }
+.work-card.size-full { grid-column: span 12; }
+
+.work-node { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.work-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; margin: 0 0 12px; color: var(--fg); }
+.size-lg .work-title { font-size: 34px; }
+.work-excerpt { font-family: var(--font-serif); font-size: 16px; color: var(--fg-soft); margin: 0 0 20px; flex: 1; }
+.work-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.tag { font-family: var(--font-mono); font-size: 11px; padding: 4px 10px; background: var(--bg-deep); border: 1px solid var(--border-soft); border-radius: 999px; color: var(--fg-soft); }
+
+/* ===== About ===== */
+.about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; }
+.about-bio { font-family: var(--font-serif); font-size: 19px; color: var(--fg-soft); }
+.about-bio strong { color: var(--fg); font-weight: 600; }
+.about-side { display: flex; flex-direction: column; gap: 22px; }
+.about-block { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
+.about-block h4 { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; }
+.about-block h4::after { content: ''; flex: 1; height: 1px; background: var(--border-soft); }
+.about-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.about-list li { display: flex; align-items: baseline; gap: 14px; font-size: 15px; color: var(--fg-soft); }
+.about-list .label { color: var(--muted); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; min-width: 80px; }
+.about-list .value { color: var(--fg); }
+.tech-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.tech-item { font-family: var(--font-mono); font-size: 11.5px; padding: 5px 11px; background: var(--bg-deep); border: 1px solid var(--border-soft); border-radius: 999px; color: var(--fg-soft); }
+
+/* ===== Footer ===== */
+.site-footer { border-top: 1px solid var(--border-soft); padding: 48px 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer-text { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.footer-links { display: flex; gap: 22px; }
+.footer-links a { font-family: var(--font-mono); font-size: 12px; color: var(--fg-soft); text-decoration: none; }
+.footer-links a:hover { color: var(--accent); }
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .work-card.size-lg, .work-card.size-md, .work-card.size-full { grid-column: span 12; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress-bar"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">A</span>
+      <span>arif.dev</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#about">about</a>
+
+    </nav>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <div class="indicator" aria-hidden="true"></div>
+      <button data-theme-btn="light" aria-label="Light theme" title="Paper">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button data-theme-btn="dim" aria-label="Dim theme" title="Dusk">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+      </button>
+      <button data-theme-btn="dark" aria-label="Dark theme" title="Night">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section (Profile) -->
+  <section class="hero">
+    <div class="ambient-blob" style="top: 10%; right: -8%; width: 460px; height: 460px; background: radial-gradient(circle, var(--accent), transparent 70%);"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-intro">~/hello, world — profile</div>
+          <h1 class="hero-title">
+            I'm <span class="accent">[Arif]</span><br>
+            ยินดีต้อนรับสู่ ประวัติส่วนตัวของฉัน
+          </h1>
+          <a href="#about" class="hero-cta">
+            ทำความรู้จักฉันเพิ่มเติม
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <!-- Interactive Terminal -->
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+            <div class="terminal-title">user Arif </div>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <!-- ข้อความจะรันผ่าน JavaScript ด้านล่าง -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats -->
+
+
+  <!-- About Section (ถัดจาก profile ทันที) -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">Biography</div>
+          <h2 class="section-title">เกี่ยวกับฉัน</h2>
+        </div>
+      </div>
+      <h3 class="work-title">ข้อมูลพื้นฐานส่วนตัว</h3>
+      <div class="about-grid">
+        <div class="about-bio">
+          <p class="work-excerpt">ชื่อ-สกุล : อารีฟ อุมา
+          <p class="work-excerpt">ชื่อเล่น : รีฟ</p>
+          <p class="work-excerpt">วัด-เดือน-ปีเกิด : 9 กุมภาพันธ์ 2550</p>
+      <h3 class="work-title">ประวัติการศึกษา</h3>
+          <p class="work-excerpt">ระดับการศึกษาล่าสุด : มัธยมศึกษาปีที่6
+          <p class="work-excerpt">ชื่อสถาบันการศึกษา : จริยธรรมอิสลามวิทยา</p>
+      <h3 class="work-title">งานอดิเรก</h3>
+          <p class="work-excerpt">งานอดิเรก : เล่นเกม
+      <h3 class="work-title">เป้าหมาย</h3>
+          <p class="work-excerpt">เป้าหมาย : นักพัฒนา AI
+
+          
+        </div>
+        <div class="about-side">
+          <!-- Connect blocks -->
+          <div class="about-block">
+            <h4>ข้อมูลติดต่อ</h4>
+            <ul class="about-list">
+              
+              <li><span class="label">ที่อยู่</span><span class="value">Naket, Khokpho, Pattani, Thailand</span></li>
+              <li><span class="label">อีเมล</span><span class="value">arifauma9247@gmail.com</span></li>
+              <li><span class="label">เบอร์โทร</span><span class="value">0932939247</span></li>
+            </ul>
+            <div style="width: 100%; overflow: hidden; border-radius: 12px; margin-top: 15px;">
+              <img src="https://i.postimg.cc/sftZ1PYH/profile-jpg.jpg" alt="Arif Profile" style="width: 100%; height: auto; display: block;">
+            </div>
+          </div>
+          
+          <!-- Tech Stack Tags -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="about-block">
+
+            <ul class="about-list">
+              <div>
+     <h2 class="section-title">สัดส่วน</h2>
+        <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">Male<span class="unit">gender</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">19<span class="unit">Year</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">62<span class="unit">weight</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">162<span class="unit">height</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+
+
+
+<!-- Theme Switcher & Terminal Logic Javascript -->
+<script>
+// 1. Theme Logic
+const themeButtons = document.querySelectorAll('[data-theme-btn]');
+const htmlTag = document.documentElement;
+
+themeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetTheme = btn.getAttribute('data-theme-btn');
+    htmlTag.setAttribute('data-theme', targetTheme);
+    localStorage.setItem('saved-portfolio-theme', targetTheme);
+    updateActiveButton(targetTheme);
+  });
+});
+
+function updateActiveButton(theme) {
+  themeButtons.forEach(btn => {
+    if(btn.getAttribute('data-theme-btn') === theme) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+const savedTheme = localStorage.getItem('saved-portfolio-theme') || 'dark';
+htmlTag.setAttribute('data-theme', savedTheme);
+updateActiveButton(savedTheme);
+
+// 2. Reading Progress Bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById('progress-bar').style.width = scrolled + '%';
+});
+
+// 3. Interactive Terminal Typing Effect
+const terminalBody = document.getElementById('terminal-body');
+const terminalLines = [
+  { type: 'cmd', text: 'whoami' },
+  { type: 'out', text: 'Arif — Full-Stack Developer & Tech Enthusiast' },
+  { type: 'cmd', text: 'cat skills.json' },
+  { type: 'out', text: '{\n  "frontend": ["Next.js", "React", "Tailwind"],\n  "backend": ["Node.js", "Go", "Postgres"],\n  "devops": ["Docker", "CI/CD"]\n}' },
+  { type: 'cmd', text: 'echo $STATUS' },
+  { type: 'out', text: 'Open for new exciting opportunities!' }
+];
+
+let currentLine = 0;
+function renderTerminal() {
+  if (currentLine < terminalLines.length) {
+    const lineData = terminalLines[currentLine];
+    const div = document.createElement('div');
+    div.className = 'term-line';
+    
+    if (lineData.type === 'cmd') {
+      div.innerHTML = `<span class="term-prompt">❯</span><span class="term-cmd">${lineData.text}</span>`;
+      terminalBody.appendChild(div);
+      currentLine++;
+      setTimeout(renderTerminal, 800);
+    } else {
+      div.className = 'term-line term-out';
+      div.style.whiteSpace = 'pre';
+      div.textContent = lineData.text;
+      terminalBody.appendChild(div);
+      currentLine++;
+      setTimeout(renderTerminal, 600);
+    }
+  } else {
+    // Add flashing cursor at the end
+    const cursorDiv = document.createElement('div');
+    cursorDiv.className = 'term-line';
+    cursorDiv.innerHTML = `<span class="term-prompt">❯</span><span class="term-cursor"></span>`;
+    terminalBody.appendChild(cursorDiv);
+  }
+}
+setTimeout(renderTerminal, 500);
+</script>
+</body>
+</html>
